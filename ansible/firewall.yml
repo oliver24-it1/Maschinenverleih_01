@@ -1,0 +1,31 @@
+---
+- name: Firewall (ufw)
+  hosts: verleih
+  become: true
+
+  tasks:
+    - name: ufw ist installiert
+      ansible.builtin.apt:
+        name: ufw
+        state: present
+
+    - name: Eingehend standardmäßig blockieren
+      community.general.ufw:
+        default: deny
+        direction: incoming
+
+    - name: Ausgehend standardmäßig erlauben
+      community.general.ufw:
+        default: allow
+        direction: outgoing
+
+    - name: SSH erlauben
+      community.general.ufw:
+        rule: allow
+        port: "22"
+        proto: tcp
+        comment: SSH
+
+    - name: Firewall aktivieren
+      community.general.ufw:
+        state: enabled
