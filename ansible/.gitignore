@@ -1,0 +1,5 @@
+.vault_pass*
+id_rsa*
+id_ed25519*
+*.pem
+*.key
