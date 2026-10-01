@@ -1,0 +1,35 @@
+---
+- name: SSH-Härtung
+  hosts: verleih
+  become: true
+
+  tasks:
+    - name: SSH-Härtungseinstellungen setzen
+      ansible.builtin.copy:
+        dest: /etc/ssh/sshd_config.d/10-hardening.conf
+        content: |
+          # Verwaltet durch Ansible - manuelle Änderungen werden überschrieben
+          PermitRootLogin no
+          PubkeyAuthentication yes
+          PasswordAuthentication no
+          KbdInteractiveAuthentication no
+        owner: root
+        group: root
+        mode: "0644"
+      notify: SSH neu laden
+
+    - name: Alte Einzeldatei entfernen
+      ansible.builtin.file:
+        path: /etc/ssh/sshd_config.d/10-no-root-login.conf
+        state: absent
+      notify: SSH neu laden
+
+    - name: SSH-Konfiguration auf Fehler prüfen
+      ansible.builtin.command: /usr/sbin/sshd -t
+      changed_when: false
+
+  handlers:
+    - name: SSH neu laden
+      ansible.builtin.systemd:
+        name: ssh
+        state: reloaded
