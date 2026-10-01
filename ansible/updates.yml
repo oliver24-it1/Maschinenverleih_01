@@ -1,0 +1,29 @@
+---
+- name: Automatische Sicherheitsupdates
+  hosts: verleih
+  become: true
+
+  tasks:
+    - name: unattended-upgrades ist installiert
+      ansible.builtin.apt:
+        name: unattended-upgrades
+        state: present
+
+    - name: Tägliche Updates aktivieren
+      ansible.builtin.copy:
+        dest: /etc/apt/apt.conf.d/20auto-upgrades
+        content: |
+          APT::Periodic::Update-Package-Lists "1";
+          APT::Periodic::Unattended-Upgrade "1";
+        owner: root
+        group: root
+        mode: "0644"
+
+    - name: apt-Timer sind aktiv
+      ansible.builtin.systemd:
+        name: "{{ item }}"
+        enabled: true
+        state: started
+      loop:
+        - apt-daily.timer
+        - apt-daily-upgrade.timer
