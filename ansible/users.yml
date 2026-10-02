@@ -1,0 +1,43 @@
+---
+- name: Benutzerverwaltung
+  hosts: verleih
+  become: true
+
+  tasks:
+    # --- Admin ---
+    - name: Admin-Benutzer existiert und ist in der Gruppe sudo
+      ansible.builtin.user:
+        name: nik
+        comment: "Nikolas Mantsch, Admin"
+        shell: /bin/bash
+        groups: sudo
+        append: true
+        state: present
+
+    - name: SSH-Schlüssel des Admins hinterlegen
+      ansible.posix.authorized_key:
+        user: nik
+        key: "{{ lookup('file', 'files/nik.pub') }}"
+        state: present
+
+    # --- Developer ---
+    - name: Gruppe devs existiert
+      ansible.builtin.group:
+        name: devs
+        state: present
+
+    - name: Developer-Benutzer existiert
+      ansible.builtin.user:
+        name: oliver
+        comment: "Oliver Kidkov, Developer"
+        shell: /bin/bash
+        groups: users,devs
+        append: true
+        create_home: true
+        state: present
+
+    - name: SSH-Schlüssel des Developers hinterlegen
+      ansible.posix.authorized_key:
+        user: oliver
+        key: "{{ lookup('file', 'files/oliver.pub') }}"
+        state: present
