@@ -1,0 +1,68 @@
+---
+- name: Schutz vor Schadprogrammen (ClamAV)
+  hosts: verleih
+  become: true
+
+  tasks:
+    - name: ClamAV und Signatur-Updater sind installiert
+      ansible.builtin.apt:
+        name:
+          - clamav
+          - clamav-freshclam
+        state: present
+
+    - name: Signatur-Updates laufen
+      ansible.builtin.systemd:
+        name: clamav-freshclam
+        enabled: true
+        state: started
+
+    - name: Service-Unit für den täglichen Scan
+      ansible.builtin.copy:
+        dest: /etc/systemd/system/clamscan-daily.service
+        content: |
+          [Unit]
+          Description=Täglicher ClamAV-Scan
+
+          [Service]
+          Type=oneshot
+          Nice=19
+          IOSchedulingClass=idle
+          ExecStart=/usr/bin/clamscan -r -i /home
+        owner: root
+        group: root
+        mode: "0644"
+      notify: systemd neu einlesen
+
+    - name: Timer-Unit für den täglichen Scan
+      ansible.builtin.copy:
+        dest: /etc/systemd/system/clamscan-daily.timer
+        content: |
+          [Unit]
+          Description=Täglicher ClamAV-Scan (Zeitplan)
+
+          [Timer]
+          OnCalendar=*-*-* 03:30:00
+          RandomizedDelaySec=15min
+          Persistent=true
+
+          [Install]
+          WantedBy=timers.target
+        owner: root
+        group: root
+        mode: "0644"
+      notify: systemd neu einlesen
+
+    - name: Ausstehende Handler jetzt ausführen
+      ansible.builtin.meta: flush_handlers
+
+    - name: Scan-Timer ist aktiv
+      ansible.builtin.systemd:
+        name: clamscan-daily.timer
+        enabled: true
+        state: started
+
+  handlers:
+    - name: systemd neu einlesen
+      ansible.builtin.systemd:
+        daemon_reload: true
