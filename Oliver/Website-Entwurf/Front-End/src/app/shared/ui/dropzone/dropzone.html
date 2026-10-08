@@ -1,0 +1,44 @@
+<div
+  class="dropzone group"
+  [class.ist-aktiv]="ziehtDarueber()"
+  [class.ist-gesperrt]="gesperrt()"
+  (dragenter)="beimZiehenRein($event)"
+  (dragover)="beimZiehenUeber($event)"
+  (dragleave)="beimZiehenRaus()"
+  (drop)="beimAblegen($event)"
+>
+  <input
+    #eingabe
+    type="file"
+    class="sr-only"
+    [id]="id"
+    [accept]="akzeptiert()"
+    [disabled]="gesperrt()"
+    [attr.aria-describedby]="id + '-hinweis'"
+    (change)="beimAuswaehlen()"
+  />
+
+  <label [for]="id" class="dropzone-flaeche">
+    <span class="dropzone-icon" aria-hidden="true">
+      @if (ziehtDarueber()) {
+        <svg lucideFileSpreadsheet [size]="34" [strokeWidth]="1.75" />
+      } @else {
+        <svg lucideUpload [size]="34" [strokeWidth]="1.75" />
+      }
+    </span>
+
+    <span class="mt-6 block text-xl font-bold md:text-2xl">
+      @if (ziehtDarueber()) {
+        Jetzt loslassen
+      } @else {
+        {{ titel() }}
+      }
+    </span>
+    <span class="mt-2 block text-chalk-muted">
+      oder
+      <span class="font-bold text-orange-500 underline underline-offset-4">Datei auswählen</span>
+    </span>
+  </label>
+
+  <p [id]="id + '-hinweis'" class="dropzone-hinweis">{{ hinweis() }}</p>
+</div>

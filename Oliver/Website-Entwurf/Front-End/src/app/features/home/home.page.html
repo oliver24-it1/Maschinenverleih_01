@@ -1,0 +1,284 @@
+<!-- ============ HERO ============ -->
+<section aria-labelledby="hero-titel" class="relative overflow-hidden border-b border-ink-600">
+  <!-- dezentes Raster als Bauplan-Anmutung -->
+  <div class="hero-raster pointer-events-none absolute inset-0" aria-hidden="true"></div>
+
+  <div
+    class="container-page relative grid items-center gap-14 py-16 md:py-24 lg:grid-cols-12 lg:gap-10 lg:py-28"
+  >
+    <div class="lg:col-span-7">
+      <p class="eyebrow" appReveal>Maschinenverleih · Nordrhein-Westfalen</p>
+
+      <h1
+        id="hero-titel"
+        class="mt-6 text-4xl font-black tracking-tight sm:text-5xl xl:text-[4.25rem]"
+        appReveal="1"
+      >
+        Starke Maschinen.<br />
+        <span class="text-orange-500">Verlässlich verliehen.</span>
+      </h1>
+
+      <p class="mt-6 max-w-xl text-lg text-chalk-muted md:text-xl" appReveal="2">
+        Kettenhof NRW ist Ihr familiärer Partner für Baumaschinen und Geräte – geprüft, gewartet und
+        genau dann verfügbar, wenn Ihre Baustelle sie braucht.
+      </p>
+
+      <p
+        class="mt-6 inline-flex items-center gap-2.5 border-l-2 border-orange-500 pl-4 text-base font-medium"
+        appReveal="3"
+      >
+        <svg lucideClock [size]="18" class="text-orange-500" />
+        {{ slogan }}
+      </p>
+
+      <div class="mt-10 flex flex-col gap-3 sm:flex-row" appReveal="4">
+        <a routerLink="/" fragment="maschinen" class="btn btn-primary btn-shimmer">
+          Maschinen ansehen
+          <svg lucideArrowRight [size]="18" />
+        </a>
+        <a routerLink="/stammdaten" class="btn btn-outline">Stammdaten einpflegen</a>
+      </div>
+    </div>
+
+    <!-- Visuelle Platzhalter-Karte: Verfügbarkeit (Beispieldaten) -->
+    <div class="lg:col-span-5" appReveal="3">
+      <figure class="card overflow-hidden" aria-labelledby="vorschau-beschriftung">
+        <div class="flex items-center justify-between border-b border-ink-600 px-6 py-4">
+          <span class="text-xs font-bold tracking-[0.16em] text-chalk-muted uppercase">
+            Verfügbarkeit
+          </span>
+          <span class="badge badge-accent">Beispiel</span>
+        </div>
+
+        <div class="px-6 pt-6 pb-7">
+          <div class="flex items-start gap-4">
+            <div
+              class="grid size-14 shrink-0 place-items-center rounded-[var(--radius-edge)] bg-orange-500 text-ink-900"
+              aria-hidden="true"
+            >
+              <svg lucideShovel [size]="28" [strokeWidth]="2.25" />
+            </div>
+            <div>
+              <p class="text-xl font-bold">Minibagger</p>
+              <p class="text-sm text-chalk-muted">Kategorie Erdbewegung · Beispiel</p>
+            </div>
+          </div>
+
+          <ul class="mt-7 grid grid-cols-7 gap-1.5" aria-label="Belegung dieser Woche (Beispiel)">
+            @for (tag of beispielwoche; track tag.kuerzel) {
+              <li class="flex flex-col items-center gap-2">
+                <span class="text-xs font-medium text-chalk-muted" aria-hidden="true">{{
+                  tag.kuerzel
+                }}</span>
+                <span
+                  class="h-10 w-full rounded-[2px] border"
+                  [class]="
+                    tag.frei
+                      ? 'border-petrol-400 bg-petrol-500'
+                      : 'belegt-muster border-ink-500 bg-ink-700'
+                  "
+                ></span>
+                <span class="sr-only">{{ tag.tag }}: {{ tag.frei ? 'frei' : 'belegt' }}</span>
+              </li>
+            }
+          </ul>
+
+          <div class="mt-4 flex gap-5 text-xs text-chalk-muted" aria-hidden="true">
+            <span class="flex items-center gap-1.5"
+              ><span class="size-3 rounded-[2px] border border-petrol-400 bg-petrol-500"></span>
+              frei</span
+            >
+            <span class="flex items-center gap-1.5"
+              ><span
+                class="belegt-muster size-3 rounded-[2px] border border-ink-500 bg-ink-700"
+              ></span>
+              belegt</span
+            >
+          </div>
+
+          <div class="mt-7 flex items-center justify-between border-t border-ink-600 pt-5">
+            <p class="text-sm">
+              <span class="text-chalk-muted">Nächster freier Termin</span><br />
+              <strong class="text-petrol-200">Mittwoch</strong>
+            </p>
+            <span class="btn btn-secondary btn-sm pointer-events-none" aria-hidden="true">
+              Reservieren
+            </span>
+          </div>
+        </div>
+
+        <figcaption
+          id="vorschau-beschriftung"
+          class="border-t border-ink-600 px-6 py-3 text-xs text-chalk-muted"
+        >
+          Vorschau mit Beispieldaten – die Online-Reservierung folgt in einem späteren Sprint.
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LEISTUNGEN ============ -->
+<section id="leistungen" aria-labelledby="leistungen-titel" class="container-page py-20 md:py-28">
+  <div class="max-w-2xl">
+    <p class="eyebrow" appReveal>Leistungen</p>
+    <h2 id="leistungen-titel" class="mt-4 text-3xl font-bold md:text-4xl" appReveal="1">
+      Alles, was Ihr Projekt am Laufen hält.
+    </h2>
+  </div>
+
+  <ul class="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+    @for (leistung of leistungen; track leistung.titel; let i = $index) {
+      <li class="card card-interactive p-7" [appReveal]="i + 1">
+        <div
+          class="flex size-12 items-center justify-center border border-orange-500 text-orange-500"
+        >
+          @switch (leistung.icon) {
+            @case ('kalender') {
+              <svg lucideCalendarCheck [size]="22" />
+            }
+            @case ('wartung') {
+              <svg lucideWrench [size]="22" />
+            }
+            @case ('rechnung') {
+              <svg lucideReceiptText [size]="22" />
+            }
+            @case ('paket') {
+              <svg lucidePackage [size]="22" />
+            }
+          }
+        </div>
+        <h3 class="mt-6 text-lg font-bold">{{ leistung.titel }}</h3>
+        <p class="mt-2 text-chalk-muted">{{ leistung.text }}</p>
+      </li>
+    }
+  </ul>
+</section>
+
+<!-- ============ MASCHINEN-VORSCHAU (Platzhalter) ============ -->
+<section
+  id="maschinen"
+  aria-labelledby="maschinen-titel"
+  class="border-y border-ink-600 bg-ink-850 py-20 md:py-28"
+>
+  <div class="container-page">
+    <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+      <div class="max-w-2xl">
+        <p class="eyebrow" appReveal>Maschinenpark</p>
+        <h2 id="maschinen-titel" class="mt-4 text-3xl font-bold md:text-4xl" appReveal="1">
+          Die richtige Maschine für jeden Einsatz.
+        </h2>
+      </div>
+      <p class="badge badge-warning self-start md:self-auto" appReveal="2">
+        Platzhalter · Katalog folgt mit Datenbankanbindung
+      </p>
+    </div>
+
+    <ul class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      @for (kategorie of kategorien; track kategorie.titel; let i = $index) {
+        <li class="card card-interactive group overflow-hidden" [appReveal]="i + 1">
+          <div
+            class="maschinen-platzhalter flex aspect-[4/3] items-center justify-center border-b border-ink-600"
+            aria-hidden="true"
+          >
+            <span class="text-ink-500 transition-colors duration-300 group-hover:text-orange-500">
+              @switch (kategorie.icon) {
+                @case ('bagger') {
+                  <svg lucideShovel [size]="56" [strokeWidth]="1.5" />
+                }
+                @case ('hebe') {
+                  <svg lucideForklift [size]="56" [strokeWidth]="1.5" />
+                }
+                @case ('verdichtung') {
+                  <svg lucideConstruction [size]="56" [strokeWidth]="1.5" />
+                }
+                @case ('garten') {
+                  <svg lucideTrees [size]="56" [strokeWidth]="1.5" />
+                }
+              }
+            </span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg font-bold">{{ kategorie.titel }}</h3>
+            <p class="mt-1 text-sm text-chalk-muted">{{ kategorie.text }}</p>
+          </div>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<!-- ============ ABLAUF ============ -->
+<section aria-labelledby="ablauf-titel" class="container-page py-20 md:py-28">
+  <div class="max-w-2xl">
+    <p class="eyebrow" appReveal>So einfach geht's</p>
+    <h2 id="ablauf-titel" class="mt-4 text-3xl font-bold md:text-4xl" appReveal="1">
+      In drei Schritten zur Maschine.
+    </h2>
+  </div>
+
+  <ol class="mt-12 grid gap-px overflow-hidden border border-ink-600 bg-ink-600 md:grid-cols-3">
+    @for (schritt of ablauf; track schritt.titel; let i = $index) {
+      <li class="bg-ink-900 p-8" [appReveal]="i + 1">
+        <span class="block text-5xl font-black text-orange-500" aria-hidden="true">
+          0{{ i + 1 }}
+        </span>
+        <h3 class="mt-5 text-lg font-bold">
+          <span class="sr-only">Schritt {{ i + 1 }}: </span>{{ schritt.titel }}
+        </h3>
+        <p class="mt-2 text-chalk-muted">{{ schritt.text }}</p>
+      </li>
+    }
+  </ol>
+</section>
+
+<!-- ============ KONTAKT ============ -->
+<section id="kontakt" aria-labelledby="kontakt-titel" class="container-page">
+  <div class="card grid overflow-hidden lg:grid-cols-12" appReveal>
+    <div class="border-b border-ink-600 p-8 md:p-12 lg:col-span-7 lg:border-r lg:border-b-0">
+      <p class="eyebrow">Kontakt</p>
+      <h2 id="kontakt-titel" class="mt-4 text-3xl font-bold md:text-4xl">
+        Persönlich beraten. Regional verwurzelt.
+      </h2>
+      <p class="mt-4 max-w-lg text-chalk-muted">
+        Sie wissen noch nicht genau, welche Maschine passt? Wir beraten Sie gern – ehrlich, direkt
+        und mit Erfahrung vom Bau.
+      </p>
+      <div class="mt-8">
+        <a routerLink="/" fragment="maschinen" class="btn btn-primary btn-shimmer">
+          Maschinen ansehen
+          <svg lucideArrowRight [size]="18" />
+        </a>
+      </div>
+    </div>
+
+    <!-- Platzhalter: echte Kontaktdaten liefert der Auftraggeber -->
+    <address class="space-y-6 p-8 not-italic md:p-12 lg:col-span-5">
+      <p class="flex gap-4">
+        <svg lucideMapPin [size]="22" class="mt-0.5 shrink-0 text-orange-500" />
+        <span
+          ><strong class="block">Anschrift</strong><span class="text-chalk-muted">folgt</span></span
+        >
+      </p>
+      <p class="flex gap-4">
+        <svg lucidePhone [size]="22" class="mt-0.5 shrink-0 text-orange-500" />
+        <span
+          ><strong class="block">Telefon</strong><span class="text-chalk-muted">folgt</span></span
+        >
+      </p>
+      <p class="flex gap-4">
+        <svg lucideMail [size]="22" class="mt-0.5 shrink-0 text-orange-500" />
+        <span
+          ><strong class="block">E-Mail</strong><span class="text-chalk-muted">folgt</span></span
+        >
+      </p>
+      <p class="flex gap-4">
+        <svg lucideCalendarCheck [size]="22" class="mt-0.5 shrink-0 text-orange-500" />
+        <span
+          ><strong class="block">Online-Reservierung</strong
+          ><span class="text-chalk-muted">rund um die Uhr</span></span
+        >
+      </p>
+    </address>
+  </div>
+</section>

@@ -164,8 +164,7 @@ Table adresse {
   strasse varchar(150) [not null]
   hausnummer varchar(20) [not null]
   adresszusatz varchar(150)
-  plz varchar(10) [not null]
-  ort varchar(100) [not null]
+  plz_ort_id int [not null]
   land_code char(2) [not null, default: 'DE']
   created_at timestamptz [not null, default: `now()`]
   Note: 'Append-only: bestehende Zeilen werden nie geaendert, bei Umzug entsteht eine neue Zeile. Dokumente zeigen auf die alte.'
@@ -238,6 +237,27 @@ Table kunde_adresse {
     (kunde_id, adresse_id, verwendung) [unique]
   }
 }
+
+Table plz_ort_id{
+  id int [pk]
+  plz_id int
+  ort_id varchar
+}
+
+Table plz {
+  id int [pk]
+  plz int
+}
+
+Table ort {
+  id int [pk]
+  ort_ortsteil varchar
+}
+
+Ref: plz_ort_id.plz_id > plz.id
+Ref: plz_ort_id.ort_id > ort.id
+
+Ref: adresse.plz_ort_id > plz_ort_id.id
 
 Table profil {
   id uuid [pk, note: 'Identisch mit auth.users.id (Supabase). FK per SQL. Passwort, Sperre, letzte Anmeldung liegen in Auth/Authelia.']

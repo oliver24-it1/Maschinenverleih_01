@@ -1,0 +1,51 @@
+<footer class="mt-24 border-t border-ink-600 bg-ink-950">
+  <div class="hazard-rule opacity-80" aria-hidden="true"></div>
+
+  <div class="container-page grid gap-12 py-14 md:grid-cols-12">
+    <div class="md:col-span-5">
+      <img
+        src="images/logo-kettenhof.png"
+        alt="Kettenhof NRW"
+        width="493"
+        height="158"
+        loading="lazy"
+        class="h-12 w-auto"
+      />
+      <p class="mt-5 max-w-sm text-lg font-medium text-chalk">„{{ slogan }}“</p>
+    </div>
+
+    <nav aria-label="Fußzeilennavigation" class="md:col-span-3">
+      <h2 class="text-sm font-bold tracking-[0.14em] text-orange-500 uppercase">Seiten</h2>
+      <ul class="mt-4 space-y-2">
+        @for (eintrag of navigation; track eintrag.bezeichnung) {
+          <li>
+            <a
+              [routerLink]="eintrag.pfad"
+              class="text-chalk-muted underline-offset-4 transition-colors hover:text-chalk hover:underline"
+              >{{ eintrag.bezeichnung }}</a
+            >
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <div class="md:col-span-4">
+      <h2 class="text-sm font-bold tracking-[0.14em] text-orange-500 uppercase">Rechtliches</h2>
+      <!-- Platzhalter: Rechtstexte liefert der Auftraggeber -->
+      <ul class="mt-4 space-y-2 text-chalk-muted">
+        <li>Impressum <span class="text-xs">(folgt)</span></li>
+        <li>Datenschutzerklärung <span class="text-xs">(folgt)</span></li>
+        <li>Erklärung zur Barrierefreiheit <span class="text-xs">(folgt)</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-ink-700">
+    <div
+      class="container-page flex flex-col gap-2 py-6 text-sm text-chalk-muted sm:flex-row sm:justify-between"
+    >
+      <p>© {{ jahr }} Kettenhof NRW – Maschinenverleih</p>
+      <p>Prototyp · Schulprojekt</p>
+    </div>
+  </div>
+</footer>

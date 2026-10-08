@@ -1,0 +1,111 @@
+<header>
+  <!-- Topbar mit Slogan -->
+  <div class="border-b border-ink-600 bg-ink-950 text-chalk-muted">
+    <div class="container-page flex h-9 items-center justify-between text-[0.8125rem]">
+      <p class="flex items-center gap-2">
+        <svg lucideClock [size]="14" class="text-orange-500" />
+        <span>{{ slogan }}</span>
+      </p>
+      <p class="hidden sm:block">Maschinenverleih · Nordrhein-Westfalen</p>
+    </div>
+  </div>
+
+  <div class="border-b border-ink-600 bg-ink-900/95 backdrop-blur-sm">
+    <div class="container-page flex h-[4.5rem] items-center justify-between gap-6">
+      <a routerLink="/" class="-m-2 flex shrink-0 items-center p-2">
+        <img
+          src="images/logo-kettenhof.png"
+          alt="Kettenhof NRW – zur Startseite"
+          width="493"
+          height="158"
+          class="h-10 w-auto md:h-11"
+        />
+      </a>
+
+      <!-- Desktop-Navigation -->
+      <nav aria-label="Hauptnavigation" class="hidden lg:block">
+        <ul class="flex items-center gap-1">
+          @for (eintrag of navigation; track eintrag.bezeichnung) {
+            <li>
+              @if (eintrag.pfad) {
+                <a
+                  [routerLink]="eintrag.pfad"
+                  routerLinkActive="nav-aktiv"
+                  ariaCurrentWhenActive="page"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                  class="nav-link"
+                  >{{ eintrag.bezeichnung }}</a
+                >
+              } @else {
+                <span class="nav-link nav-gesperrt">
+                  {{ eintrag.bezeichnung }}
+                  <span
+                    class="badge badge-muted ml-1 !px-1.5 !py-0 text-[0.625rem]"
+                    aria-hidden="true"
+                    >Bald</span
+                  >
+                  <span class="sr-only">(noch nicht verfügbar)</span>
+                </span>
+              }
+            </li>
+          }
+        </ul>
+      </nav>
+
+      <div class="hidden lg:block">
+        <a routerLink="/stammdaten" class="btn btn-primary btn-shimmer btn-sm">Excel importieren</a>
+      </div>
+
+      <!-- Mobil-Menü -->
+      <button
+        #menueKnopf
+        type="button"
+        class="btn btn-ghost btn-sm lg:hidden"
+        [attr.aria-expanded]="menueOffen()"
+        aria-controls="mobil-navigation"
+        (click)="umschalten()"
+      >
+        @if (menueOffen()) {
+          <svg lucideX [size]="20" />
+        } @else {
+          <svg lucideMenu [size]="20" />
+        }
+        <span>Menü</span>
+      </button>
+    </div>
+
+    <nav
+      id="mobil-navigation"
+      aria-label="Hauptnavigation mobil"
+      class="mobil-menue border-t border-ink-600 bg-ink-900 lg:hidden"
+      [hidden]="!menueOffen()"
+    >
+      <ul class="container-page flex flex-col py-3">
+        @for (eintrag of navigation; track eintrag.bezeichnung) {
+          <li class="border-b border-ink-700 last:border-b-0">
+            @if (eintrag.pfad) {
+              <a
+                [routerLink]="eintrag.pfad"
+                routerLinkActive="nav-aktiv"
+                ariaCurrentWhenActive="page"
+                [routerLinkActiveOptions]="{ exact: true }"
+                class="nav-link w-full !py-3.5"
+                >{{ eintrag.bezeichnung }}</a
+              >
+            } @else {
+              <span class="nav-link nav-gesperrt w-full !py-3.5">
+                {{ eintrag.bezeichnung }}
+                <span
+                  class="badge badge-muted ml-2 !px-1.5 !py-0 text-[0.625rem]"
+                  aria-hidden="true"
+                  >Bald</span
+                >
+                <span class="sr-only">(noch nicht verfügbar)</span>
+              </span>
+            }
+          </li>
+        }
+      </ul>
+    </nav>
+  </div>
+</header>

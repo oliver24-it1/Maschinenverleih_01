@@ -1,0 +1,386 @@
+<!-- ============ KOPF ============ -->
+<section class="border-b border-ink-600">
+  <div class="container-page grid gap-10 py-14 md:py-20 lg:grid-cols-12">
+    <div class="lg:col-span-7">
+      <p class="eyebrow" appReveal>Verwaltung · Excel-Import</p>
+      <h1 class="mt-5 text-4xl font-black md:text-5xl" appReveal="1">Stammdaten einpflegen</h1>
+      <p class="mt-5 max-w-2xl text-lg text-chalk-muted" appReveal="2">
+        Übernehmen Sie Ihre bestehende Kundenliste aus Excel. Jede Zeile wird vor der Übernahme
+        geprüft – Sie sehen sofort, welche Datensätze vollständig sind und wo nachgebessert werden
+        muss.
+      </p>
+      <p class="mt-5 flex max-w-2xl gap-3 text-sm text-chalk-muted" appReveal="3">
+        <svg lucideLock [size]="18" class="mt-0.5 shrink-0 text-petrol-200" />
+        <span>
+          Die Datei wird nur in Ihrem Browser ausgewertet und nicht hochgeladen. Maschinendaten
+          werden nicht importiert, sondern im System neu erfasst.
+        </span>
+      </p>
+    </div>
+
+    <aside class="lg:col-span-5" aria-labelledby="anleitung-titel" appReveal="2">
+      <div class="card p-7">
+        <h2 id="anleitung-titel" class="text-lg font-bold">So funktioniert der Import</h2>
+        <ol class="mt-5 space-y-4">
+          <li class="flex gap-4">
+            <span class="schritt-nummer" aria-hidden="true">1</span>
+            <span
+              >Vorlage herunterladen oder eigene Liste verwenden – erste Zeile enthält die
+              Spaltennamen.</span
+            >
+          </li>
+          <li class="flex gap-4">
+            <span class="schritt-nummer" aria-hidden="true">2</span>
+            <span
+              >Datei ablegen. Pflicht sind <strong>Kundennummer</strong>,
+              <strong>E-Mail</strong> sowie <strong>Nachname</strong> bzw.
+              <strong>Firmenname</strong>.</span
+            >
+          </li>
+          <li class="flex gap-4">
+            <span class="schritt-nummer" aria-hidden="true">3</span>
+            <span>Vorschau prüfen, Fehler in Excel korrigieren und Datei erneut ablegen.</span>
+          </li>
+        </ol>
+        <button type="button" class="btn btn-outline btn-sm mt-7" (click)="vorlageHerunterladen()">
+          <svg lucideDownload [size]="16" />
+          Vorlage herunterladen (CSV)
+        </button>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<div class="container-page py-14">
+  <!-- ============ UPLOAD ============ -->
+  <section aria-labelledby="upload-titel">
+    <h2 id="upload-titel" class="sr-only">Datei hochladen</h2>
+    <app-dropzone
+      [akzeptiert]="akzeptiert"
+      titel="Excel-Datei hier ablegen"
+      hinweis="Excel (.xlsx, .xls) oder CSV · höchstens 5 MB · es wird das erste Tabellenblatt gelesen"
+      [gesperrt]="beschaeftigt()"
+      (dateiGewaehlt)="verarbeite($event)"
+    />
+  </section>
+
+  <!-- Statusmeldungen für Screenreader und sichtbares Lade-Feedback -->
+  <div role="status" aria-live="polite" class="mt-8 empty:hidden">
+    @if (beschaeftigt()) {
+      <div class="card ladeanzeige p-6">
+        <div class="flex items-center gap-4">
+          <svg lucideFileSpreadsheet [size]="26" class="shrink-0 text-petrol-200" />
+          <div class="min-w-0 flex-1">
+            <p class="truncate font-bold">{{ dateiname() }}</p>
+            <p class="text-sm text-chalk-muted">
+              {{ phase() === 'lesen' ? 'Datei wird gelesen …' : 'Daten werden geprüft …' }}
+            </p>
+          </div>
+          @if (phase() === 'lesen') {
+            <span class="text-sm tabular-nums text-chalk-muted" aria-hidden="true">
+              {{ (fortschritt() * 100).toFixed(0) }} %
+            </span>
+          }
+        </div>
+        <div
+          class="fortschritt mt-5"
+          [class.unbestimmt]="phase() === 'auswerten'"
+          role="progressbar"
+          aria-label="Fortschritt des Imports"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          [attr.aria-valuenow]="phase() === 'lesen' ? (fortschritt() * 100).toFixed(0) : null"
+        >
+          <div class="fortschritt-balken" [style.width.%]="fortschritt() * 100"></div>
+        </div>
+      </div>
+    }
+    @if (phase() === 'fertig' && ergebnis(); as e) {
+      <p class="sr-only">
+        {{ e.zusammenfassung.gesamt }} Zeilen eingelesen: {{ e.zusammenfassung.ok }} fehlerfrei,
+        {{ e.zusammenfassung.warnung }} mit Warnungen, {{ e.zusammenfassung.fehler }} mit Fehlern.
+      </p>
+    }
+  </div>
+
+  <!-- ============ FEHLER ============ -->
+  @if (phase() === 'fehler') {
+    <div
+      #fehlerBox
+      tabindex="-1"
+      role="alert"
+      class="card mt-8 flex flex-col gap-4 border-danger/60 p-6 sm:flex-row sm:items-start"
+    >
+      <svg lucideCircleAlert [size]="24" class="shrink-0 text-danger" />
+      <div class="flex-1">
+        <p class="font-bold text-danger">Datei konnte nicht importiert werden</p>
+        <p class="mt-1">{{ fehlermeldung() }}</p>
+      </div>
+      <button type="button" class="btn btn-ghost btn-sm self-start" (click)="zuruecksetzen()">
+        <svg lucideRotateCcw [size]="16" />
+        Zurücksetzen
+      </button>
+    </div>
+  }
+
+  <!-- ============ ERGEBNIS ============ -->
+  @if (ergebnis(); as e) {
+    <section aria-labelledby="ergebnis-titel" class="ergebnis-ein mt-14">
+      <div class="flex flex-col justify-between gap-4 md:flex-row md:items-end">
+        <div>
+          <p class="eyebrow">Vorschau</p>
+          <h2
+            id="ergebnis-titel"
+            #ergebnisUeberschrift
+            tabindex="-1"
+            class="mt-3 text-2xl font-bold break-all md:text-3xl"
+          >
+            {{ e.dateiname }}
+          </h2>
+          <p class="mt-1 text-sm text-chalk-muted">Tabellenblatt „{{ e.tabellenblatt }}“</p>
+        </div>
+        <button
+          type="button"
+          class="btn btn-ghost btn-sm self-start md:self-auto"
+          (click)="zuruecksetzen()"
+        >
+          <svg lucideRotateCcw [size]="16" />
+          Andere Datei wählen
+        </button>
+      </div>
+
+      <!-- Kennzahlen -->
+      <dl
+        class="mt-8 grid grid-cols-2 gap-px overflow-hidden border border-ink-600 bg-ink-600 lg:grid-cols-4"
+      >
+        <div class="kennzahl">
+          <dt>Zeilen gesamt</dt>
+          <dd>{{ e.zusammenfassung.gesamt.toLocaleString('de-DE') }}</dd>
+        </div>
+        <div class="kennzahl">
+          <dt class="flex items-center gap-2">
+            <svg lucideCircleCheck [size]="16" class="text-success" /> Fehlerfrei
+          </dt>
+          <dd class="text-success">{{ e.zusammenfassung.ok.toLocaleString('de-DE') }}</dd>
+        </div>
+        <div class="kennzahl">
+          <dt class="flex items-center gap-2">
+            <svg lucideTriangleAlert [size]="16" class="text-warning" /> Mit Warnungen
+          </dt>
+          <dd class="text-warning">{{ e.zusammenfassung.warnung.toLocaleString('de-DE') }}</dd>
+        </div>
+        <div class="kennzahl">
+          <dt class="flex items-center gap-2">
+            <svg lucideCircleAlert [size]="16" class="text-danger" /> Mit Fehlern
+          </dt>
+          <dd class="text-danger">{{ e.zusammenfassung.fehler.toLocaleString('de-DE') }}</dd>
+        </div>
+      </dl>
+
+      @if (e.zuordnung.fehlendePflicht.length) {
+        <div class="card mt-6 flex gap-4 border-danger/60 p-5" role="note">
+          <svg lucideCircleAlert [size]="22" class="shrink-0 text-danger" />
+          <p>
+            <strong class="text-danger">Pflichtspalte nicht gefunden:</strong>
+            @for (f of e.zuordnung.fehlendePflicht; track f; let letzte = $last) {
+              {{ feldnamen[f] }}{{ letzte ? '' : ', ' }}
+            }
+            . Bitte die Spaltenüberschrift in Excel anpassen (siehe Vorlage).
+          </p>
+        </div>
+      }
+
+      <!-- Spaltenzuordnung -->
+      <details class="card zuordnung mt-6">
+        <summary class="flex cursor-pointer items-center gap-3 p-5 font-medium">
+          <svg lucideInfo [size]="18" class="shrink-0 text-petrol-200" />
+          Spaltenzuordnung: {{ e.zuordnung.erkannt.length }} erkannt,
+          {{ e.zuordnung.ignoriert.length }} nicht verwendet
+        </summary>
+        <div class="grid gap-6 border-t border-ink-600 p-5 md:grid-cols-2">
+          <div>
+            <h3 class="text-sm font-bold text-chalk-muted">Erkannt</h3>
+            <ul class="mt-3 flex flex-wrap gap-2">
+              @for (z of e.zuordnung.erkannt; track z.spalte) {
+                <li class="badge badge-success">{{ z.spalte }} → {{ feldnamen[z.feld] }}</li>
+              }
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-sm font-bold text-chalk-muted">Nicht verwendet</h3>
+            @if (e.zuordnung.ignoriert.length) {
+              <ul class="mt-3 flex flex-wrap gap-2">
+                @for (s of e.zuordnung.ignoriert; track $index) {
+                  <li class="badge badge-muted">{{ s }}</li>
+                }
+              </ul>
+            } @else {
+              <p class="mt-3 text-sm text-chalk-muted">Alle Spalten wurden zugeordnet.</p>
+            }
+          </div>
+        </div>
+      </details>
+
+      <!-- Filter -->
+      <div class="mt-10 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+        <div class="w-full lg:max-w-sm">
+          <label for="import-suche" class="field-label">Datensätze durchsuchen</label>
+          <div class="relative">
+            <svg
+              lucideSearch
+              [size]="18"
+              class="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-chalk-muted"
+            />
+            <input
+              id="import-suche"
+              type="search"
+              class="input !pl-10"
+              placeholder="Name, Nummer, E-Mail …"
+              autocomplete="off"
+              [value]="suchbegriff()"
+              (input)="suchbegriff.set($any($event.target).value)"
+            />
+          </div>
+        </div>
+
+        <fieldset>
+          <legend class="field-label">Nach Status filtern</legend>
+          <div class="segment">
+            @for (option of statusOptionen(); track option.wert) {
+              <label class="segment-option">
+                <input
+                  type="radio"
+                  name="status-filter"
+                  class="sr-only"
+                  [value]="option.wert"
+                  [checked]="statusFilter() === option.wert"
+                  (change)="setzeStatusFilter(option.wert)"
+                />
+                <span
+                  >{{ option.text }}
+                  <span class="tabular-nums opacity-80">({{ option.anzahl }})</span></span
+                >
+              </label>
+            }
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- Tabelle -->
+      <app-data-table
+        class="mt-6"
+        [spalten]="spalten"
+        [zeilen]="gefilterteZeilen()"
+        [zeilenSchluessel]="zeilenSchluessel"
+        [beschriftung]="'Importvorschau ' + e.dateiname"
+        leerText="Keine Datensätze passen zum Filter."
+      >
+        <ng-template #zelle let-zeile let-spalte="spalte">
+          @switch (spalte) {
+            @case ('zeile') {
+              <span class="tabular-nums text-chalk-muted">{{ zeile.zeilennummer }}</span>
+            }
+            @case ('status') {
+              @switch (zeile.status) {
+                @case ('ok') {
+                  <span class="badge badge-success"><svg lucideCircleCheck [size]="13" />OK</span>
+                }
+                @case ('warnung') {
+                  <span class="badge badge-warning"
+                    ><svg lucideTriangleAlert [size]="13" />Warnung</span
+                  >
+                }
+                @case ('fehler') {
+                  <span class="badge badge-danger"
+                    ><svg lucideCircleAlert [size]="13" />Fehler</span
+                  >
+                }
+              }
+            }
+            @case ('kundennummer') {
+              <span class="font-medium tabular-nums">{{ zeile.daten.kundennummer || '–' }}</span>
+            }
+            @case ('name') {
+              <span class="font-medium">{{ anzeigename(zeile) || '–' }}</span>
+              <span class="block text-xs text-chalk-muted">
+                {{ zeile.daten.kundentyp === 'unternehmen' ? 'Unternehmen' : 'Privat' }}
+                @if (zeile.daten.ustIdnr) {
+                  · {{ zeile.daten.ustIdnr }}
+                }
+              </span>
+            }
+            @case ('email') {
+              <span class="[overflow-wrap:anywhere]">{{ zeile.daten.email || '–' }}</span>
+            }
+            @case ('telefon') {
+              <span class="whitespace-nowrap">{{ zeile.daten.telefon || '–' }}</span>
+            }
+            @case ('anschrift') {
+              @if (zeile.daten.strasse || zeile.daten.ort) {
+                {{ zeile.daten.strasse }} {{ zeile.daten.hausnummer }}
+                @if (zeile.daten.adresszusatz) {
+                  <span class="block text-xs text-chalk-muted">{{ zeile.daten.adresszusatz }}</span>
+                }
+                <span class="block">{{ zeile.daten.plz }} {{ zeile.daten.ort }}</span>
+              } @else {
+                <span class="text-chalk-muted">–</span>
+              }
+            }
+            @case ('hinweise') {
+              @if (zeile.meldungen.length) {
+                <ul class="space-y-1.5">
+                  @for (m of zeile.meldungen; track $index) {
+                    <li
+                      class="flex gap-2"
+                      [class.text-danger]="m.schwere === 'fehler'"
+                      [class.text-warning]="m.schwere === 'warnung'"
+                    >
+                      <span class="sr-only">{{
+                        m.schwere === 'fehler' ? 'Fehler:' : 'Warnung:'
+                      }}</span>
+                      @if (m.schwere === 'fehler') {
+                        <svg lucideCircleAlert [size]="14" class="mt-1 shrink-0" />
+                      } @else {
+                        <svg lucideTriangleAlert [size]="14" class="mt-1 shrink-0" />
+                      }
+                      <span>{{ m.text }}</span>
+                    </li>
+                  }
+                </ul>
+              } @else {
+                <span class="text-chalk-muted">Keine</span>
+              }
+            }
+          }
+        </ng-template>
+      </app-data-table>
+
+      <!-- Abschluss -->
+      <div
+        class="card mt-10 flex flex-col gap-5 p-6 md:flex-row md:items-center md:justify-between"
+      >
+        <div class="flex gap-4">
+          <svg lucideDatabase [size]="24" class="shrink-0 text-petrol-200" />
+          <div>
+            <p class="font-bold">
+              {{ e.zusammenfassung.ok + e.zusammenfassung.warnung }} von
+              {{ e.zusammenfassung.gesamt }} Datensätzen sind übernahmefähig.
+            </p>
+            <p id="uebernahme-hinweis" class="mt-1 text-sm text-chalk-muted">
+              Die Übernahme in die Datenbank folgt mit der Supabase-Anbindung. Dort werden alle
+              Daten serverseitig erneut geprüft.
+            </p>
+          </div>
+        </div>
+        <button
+          type="button"
+          class="btn btn-primary shrink-0"
+          aria-disabled="true"
+          aria-describedby="uebernahme-hinweis"
+        >
+          In Datenbank übernehmen
+        </button>
+      </div>
+    </section>
+  }
+</div>

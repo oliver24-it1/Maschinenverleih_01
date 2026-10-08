@@ -1,0 +1,91 @@
+<!-- Scrollbarer Bereich ist per Tastatur erreichbar (WCAG 2.1.1) -->
+<div
+  class="max-h-[70vh] overflow-auto rounded-[var(--radius-edge)] border border-ink-600"
+  role="region"
+  tabindex="0"
+  [attr.aria-labelledby]="id + '-beschriftung'"
+>
+  <table class="daten-tabelle">
+    <caption [id]="id + '-beschriftung'" class="sr-only">
+      {{
+        beschriftung()
+      }}
+    </caption>
+    <thead>
+      <tr>
+        @for (spalte of spalten(); track spalte.schluessel) {
+          <th scope="col" [attr.aria-sort]="ariaSort(spalte)" [class]="spalte.klasse ?? ''">
+            @if (spalte.sortierwert) {
+              <button type="button" class="sortier-knopf" (click)="sortiere(spalte)">
+                {{ spalte.titel }}
+                @switch (ariaSort(spalte)) {
+                  @case ('ascending') {
+                    <svg lucideArrowUp [size]="14" class="text-orange-500" />
+                  }
+                  @case ('descending') {
+                    <svg lucideArrowDown [size]="14" class="text-orange-500" />
+                  }
+                  @default {
+                    <svg lucideArrowUpDown [size]="14" class="text-chalk-muted" />
+                  }
+                }
+              </button>
+            } @else {
+              <span class="block px-4 py-3">{{ spalte.titel }}</span>
+            }
+          </th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      @for (zeile of sichtbar(); track zeilenSchluessel()(zeile)) {
+        <tr>
+          @for (spalte of spalten(); track spalte.schluessel) {
+            <td [class]="spalte.klasse ?? ''">
+              <ng-container
+                [ngTemplateOutlet]="zellVorlage()"
+                [ngTemplateOutletContext]="{ $implicit: zeile, spalte: spalte.schluessel }"
+              />
+            </td>
+          }
+        </tr>
+      } @empty {
+        <tr>
+          <td [attr.colspan]="spalten().length" class="!py-10 text-center text-chalk-muted">
+            {{ leerText() }}
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+<nav
+  class="mt-4 flex flex-wrap items-center justify-between gap-3"
+  [attr.aria-label]="'Seiten der Tabelle ' + beschriftung()"
+>
+  <p class="text-sm text-chalk-muted" aria-live="polite">{{ bereichText() }}</p>
+  @if (seitenAnzahl() > 1) {
+    <div class="flex items-center gap-2">
+      <button
+        type="button"
+        class="btn btn-ghost btn-sm"
+        [disabled]="seite() === 0"
+        (click)="blaettern(-1)"
+      >
+        <svg lucideChevronLeft [size]="16" />
+        Zurück
+      </button>
+      <span class="px-2 text-sm tabular-nums">Seite {{ seite() + 1 }} / {{ seitenAnzahl() }}</span>
+      <button
+        type="button"
+        class="btn btn-ghost btn-sm"
+        [disabled]="seite() >= seitenAnzahl() - 1"
+        (click)="blaettern(1)"
+      >
+        Weiter
+        <svg lucideChevronRight [size]="16" />
+      </button>
+    </div>
+  }
+</nav>
