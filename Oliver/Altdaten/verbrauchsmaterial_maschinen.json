@@ -1,0 +1,1154 @@
+{
+  "export": {
+    "quelle": "Lagerliste Verbrauchsmaterial (Altsystem)",
+    "stand": "01.10.2026"
+  },
+  "maschinen": [
+    {
+      "maschine": "Minibagger 1,5t",
+      "inventarnummern": "M-001, M-002",
+      "verbrauchsmaterial": [
+        {
+          "material": "Diesel",
+          "einheit": "Liter",
+          "preis": "1,55",
+          "lieferant": "Raiffeisen",
+          "verbrauch": "nach Bedarf",
+          "lagerbestand": 34 
+        },
+        {
+          "material": "Hydrauliköl HLP 46",
+          "einheit": "Liter",
+          "preis": "4,48 €",
+          "lieferant": "Fa. Lorentz",
+          "verbrauch": "ca. 2 Liter pro Tag",
+          "lagerbestand": 15
+        },
+        {
+          "material": "Öl 15W-40",
+          "einheit": "l",
+          "preis": "6.96 EUR",
+          "lieferant": "Lorenz Schmierstoffe (Tel. 0202 / 77 31 22)",
+          "verbrauch": "7l je Wartung",
+          "ausgaben": [
+            {
+              "datum": "18.09.2025",
+              "menge": "25 l",
+              "geraet": "M-001",
+              "rechnungsnr": "R-2025-014"
+            }
+          ]
+        },
+        {
+          "material": "Fettkartusche",
+          "einheit": "Stück",
+          "preis": 8.61,
+          "lieferant": "Schmierstoffe Lorenz GmbH, Fr. Lorenz",
+          "verbrauch": null,
+          "lagerbestand": 25
+        },
+        {
+          "material": "Luftfiltereinsatz",
+          "einheit": "Stück",
+          "preis": "18.27 EUR",
+          "lieferant": "Schmitz Baumaschinen (02191 / 93 40 0)",
+          "verbrauch": "ca. alle 3 Monate",
+          "ausgaben": [
+            {
+              "datum": "14.04.2025",
+              "menge": "1 Stück",
+              "geraet": "M-002",
+              "rechnungsnr": "R-2025-072",
+              "kunde": "Heike Weber"
+            },
+            {
+              "datum": "2025-07-15",
+              "menge": "2 Stück",
+              "geraet": "M-001"
+            }
+          ]
+        },
+        {
+          "material": "Kraftstofffilter",
+          "einheit": "Stk.",
+          "preis": 14.61,
+          "lieferant": "Baumaschinen Schmitz GmbH, Hr. Schmitz",
+          "verbrauch": "ca. alle 3 Monate"
+        },
+        {
+          "material": "Hydraulikfilter",
+          "artikelnr": "253468",
+          "einheit": "Stück",
+          "preis": "35.95 EUR",
+          "lieferant": "Schmitz Baumaschinen (02191 / 93 40 0)",
+          "verbrauch": null,
+          "lagerbestand": "149 Stück",
+          "ausgaben": [
+            {
+              "datum": "16.01.2026",
+              "menge": "4 Stück",
+              "geraet": "M-001",
+              "kunde": "Maler Klein GbR"
+            },
+            {
+              "datum": "15.11.25",
+              "menge": 2,
+              "geraet": "M-001",
+              "rechnungsnr": "R-2025-071",
+              "kunde": "GaLaBau Krause GmbH & Co. KG"
+            },
+            {
+              "datum": "2026-05-10",
+              "menge": 1,
+              "geraet": "M-001",
+              "rechnungsnr": "R-2026-066"
+            }
+          ]
+        },
+        {
+          "material": "Löffelzahn",
+          "einheit": "Stück",
+          "preis": "23,31",
+          "lieferant": "Schmitz Baumaschinen (02191 / 93 40 0)",
+          "verbrauch": "bei Wartung"
+        }
+      ],
+      "bemerkung": "Material im Container 2"
+    },
+    {
+      "maschine": "Minibagger 3t",
+      "inventarnummern": [
+        "M-003",
+        "M-004"
+      ],
+      "verbrauchsmaterial": [
+        {
+          "material": "Diesel",
+          "einheit": "l",
+          "preis": 1.73,
+          "lieferant": "Raiffeisen Markt RS, Hr. Becker, 02191-44 55 0",
+          "verbrauch": "ca. 28 l pro Tag",
+          "lagerbestand": "94 l",
+          "ausgaben": [
+            {
+              "datum": "07.04.26",
+              "menge": 26,
+              "geraet": "M-003"
+            },
+            {
+              "datum": "2026-01-02",
+              "menge": 49,
+              "geraet": "M-003",
+              "kunde": "Tiefbau Wagner OHG"
+            }
+          ]
+        },
+        {
+          "material": "Hydraulikoel HLP 46",
+          "einheit": "l",
+          "preis": "3.93 EUR",
+          "lieferant": "Fa. Lorentz",
+          "verbrauch": "12 l/Bh"
+        },
+        {
+          "material": "Öl 15W-40",
+          "artikelnr": "596268",
+          "einheit": "l",
+          "preis": 7.43,
+          "lieferant": "Fa. Lorentz",
+          "verbrauch": "ca. 26 l pro Tag",
+          "ausgaben": [
+            {
+              "datum": "21.09.25",
+              "menge": "31 l",
+              "geraet": "M-004"
+            }
+          ]
+        },
+        {
+          "material": "Mehrzweckfett Kartusche",
+          "einheit": "Stk.",
+          "preis": 7.4,
+          "lieferant": "Lorenz Schmierstoffe (Tel. 0202 / 77 31 22)",
+          "verbrauch": null,
+          "lagerbestand": 14
+        },
+        {
+          "material": "Luftfilter",
+          "einheit": "Stück",
+          "preis": "18,38 €",
+          "lieferant": "Fa. Schmitz",
+          "verbrauch": "bei Wartung",
+          "lagerbestand": "nachbestellt"
+        },
+        {
+          "material": "Dieselfilter",
+          "einheit": "Stk.",
+          "preis": "14,45",
+          "lieferant": "Baumaschinen Schmitz GmbH, Hr. Schmitz",
+          "verbrauch": "ca. alle 3 Monate",
+          "lagerbestand": "53 Stk.",
+          "ausgaben": [
+            {
+              "datum": "2025-02-11",
+              "menge": 1,
+              "geraet": "M-003"
+            },
+            {
+              "datum": "2025-08-08",
+              "menge": "4 Stk.",
+              "geraet": "M-004"
+            },
+            {
+              "datum": "09.04.2026",
+              "menge": 3,
+              "geraet": "M-004",
+              "kunde": "Anja Krause"
+            }
+          ]
+        },
+        {
+          "material": "Hydraulikfilter",
+          "einheit": "Stück",
+          "preis": 40.94,
+          "lieferant": "Fa. Schmitz",
+          "verbrauch": "ca. alle 3 Monate",
+          "lagerbestand": "leer",
+          "ausgaben": [
+            {
+              "datum": "2025-02-18",
+              "menge": 1,
+              "geraet": "M-004"
+            },
+            {
+              "datum": "2025-07-24",
+              "menge": 4,
+              "geraet": "M-003"
+            }
+          ]
+        },
+        {
+          "material": "Löffelzahn",
+          "einheit": "Stück",
+          "preis": "25,82 €",
+          "lieferant": "Schmitz Baumaschinen (02191 / 93 40 0)",
+          "verbrauch": "bei Wartung",
+          "lagerbestand": "nachbestellt"
+        }
+      ]
+    },
+    {
+      "maschine": "Radlader 3t",
+      "inventarnummern": [
+        "M-005"
+      ],
+      "verbrauchsmaterial": [
+        {
+          "material": "Diesel",
+          "einheit": "Liter",
+          "preis": "1.78 EUR",
+          "lieferant": "Raiffeisen Markt RS, Hr. Becker, 02191-44 55 0",
+          "verbrauch": "ca. 22 Liter pro Tag"
+        },
+        {
+          "material": "Hydrauliköl",
+          "einheit": "l",
+          "preis": "4.69 EUR",
+          "lieferant": "Fa. Lorentz",
+          "verbrauch": "ca. 22 l pro Tag",
+          "lagerbestand": "nachbestellt",
+          "ausgaben": [
+            {
+              "datum": "09.10.2025",
+              "menge": 36,
+              "geraet": "M-005",
+              "kunde": "Heike Weber"
+            },
+            {
+              "datum": "10.12.2025",
+              "menge": "48 l",
+              "geraet": "M-005"
+            },
+            {
+              "datum": "15.06.26",
+              "menge": "58 l",
+              "geraet": "M-005"
+            },
+            {
+              "datum": "15.08.25",
+              "menge": "33 l",
+              "geraet": "M-005"
+            }
+          ]
+        },
+        {
+          "material": "Öl 15W-40",
+          "einheit": "l",
+          "preis": "7,55 €",
+          "lieferant": "Lorenz Schmierstoffe (Tel. 0202 / 77 31 22)",
+          "verbrauch": "nach Bedarf",
+          "lagerbestand": 12
+        },
+        {
+          "material": "Mehrzweckfett Kartusche",
+          "artikelnr": "146087",
+          "einheit": "Stk.",
+          "preis": 8.53,
+          "lieferant": "Lorenz Schmierstoffe (Tel. 0202 / 77 31 22)",
+          "verbrauch": "bei Wartung",
+          "lagerbestand": "nachbestellt"
+        },
+        {
+          "material": "Luftfilter",
+          "einheit": "Stück",
+          "preis": "18.84 EUR",
+          "lieferant": "Schmitz Baumaschinen (02191 / 93 40 0)",
+          "verbrauch": "nach Bedarf",
+          "lagerbestand": 12
+        },
+        {
+          "material": "Dieselfilter",
+          "einheit": "Stück",
+          "preis": "13,81 €",
+          "lieferant": "Baumaschinen Schmitz GmbH, Hr. Schmitz",
+          "verbrauch": "Verschleißteil",
+          "lagerbestand": "nachbestellt",
+          "ausgaben": [
+            {
+              "datum": "07.06.26",
+              "menge": 3,
+              "geraet": "M-005",
+              "rechnungsnr": "R-2026-053"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "maschine": "Betonmischer 200l",
+      "inventarnummern": [
+        "M-006",
+        "M-007",
+        "M-008"
+      ],
+      "verbrauchsmaterial": [
+        {
+          "material": "Abschmierfett",
+          "einheit": "Stk.",
+          "preis": "8,28 €",
+          "lieferant": "Fa. Lorentz",
+          "verbrauch": "nach Bedarf",
+          "ausgaben": [
+            {
+              "datum": "05.07.25",
+              "menge": "3 Stk.",
+              "geraet": "M-006",
+              "rechnungsnr": "R-2025-025"
+            },
+            {
+              "datum": "18.05.2025",
+              "menge": 2,
+              "geraet": "M-007"
+            },
+            {
+              "datum": "08.03.2026",
+              "menge": "2 Stk.",
+              "geraet": "M-008",
+              "kunde": "Maler Klein GbR"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "maschine": "Rüttelplatte 90kg",
+      "inventarnummern": "M-009, M-010",
+      "verbrauchsmaterial": [
+        {
+          "material": "E10",
+          "artikelnr": "ART-6627",
+          "einheit": "Liter",
+          "preis": 1.89,
+          "lieferant": "Raiffeisen Markt RS, Hr. Becker, 02191-44 55 0",
+          "verbrauch": "6l je Wartung",
+          "lagerbestand": "29 Liter",
+          "ausgaben": [
+            {
+              "datum": "17.10.2025",
+              "menge": 48,
+              "geraet": "M-009"
+            },
+            {
+              "datum": "2025-04-10",
+              "menge": "25 Liter",
+              "geraet": "M-010"
+            }
+          ]
+        },
+        {
+          "material": "Öl 15W-40",
+          "artikelnr": "",
+          "einheit": "l",
+          "preis": "6.81 EUR",
+          "lieferant": "Fa. Lorentz",
+          "verbrauch": "7 l/Bh",
+          "lagerbestand": 0
+        },
+        {
+          "material": "Luftfilter",
+          "einheit": "Stück",
+          "preis": "18.89 EUR",
+          "lieferant": "Schmitz Baumaschinen (02191 / 93 40 0)",
+          "verbrauch": null
+        },
+        {
+          "material": "Zündkerze",
+          "artikelnr": "ART-9828",
+          "einheit": "Stück",
+          "preis": "6,98 €",
+          "lieferant": "Hoffmann Motorgeräte, Tel 0212-55 80 1",
+          "verbrauch": "bei Wartung",
+          "lagerbestand": "nachbestellt",
+          "ausgaben": [
+            {
+              "datum": "2025-02-20",
+              "menge": "2 Stück",
+              "geraet": "M-010",
+              "rechnungsnr": "R-2025-052"
+            },
+            {
+              "datum": "2026-06-30",
+              "menge": "1 Stück",
+              "geraet": "M-009"
+            },
+            {
+              "datum": "12.08.2026",
+              "menge": 1,
+              "geraet": "M-009",
+              "rechnungsnr": "R-2026-052"
+            }
+          ]
+        },
+        {
+          "material": "Keilriemen",
+          "einheit": "Stück",
+          "preis": "15.79 EUR",
+          "lieferant": "Schmitz Baumaschinen (02191 / 93 40 0)",
+          "verbrauch": "nach Bedarf",
+          "lagerbestand": 26
+        },
+        {
+          "material": "Gummimatte Rüttelplatte",
+          "einheit": "Stk.",
+          "preis": 138.27,
+          "lieferant": "Schmitz Baumaschinen (02191 / 93 40 0)",
+          "verbrauch": "ca. alle 3 Monate",
+          "lagerbestand": 10,
+          "ausgaben": [
+            {
+              "datum": "07.03.26",
+              "menge": "3 Stk.",
+              "geraet": "M-010"
+            },
+            {
+              "datum": "04.10.25",
+              "menge": "3 Stk.",
+              "geraet": "M-009",
+              "rechnungsnr": "R-2025-032"
+            },
+            {
+              "datum": "10.06.25",
+              "menge": "4 Stk.",
+              "geraet": "M-009"
+            },
+            {
+              "datum": "21.02.2025",
+              "menge": 3,
+              "geraet": "M-010"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "maschine": "Rüttelplatte 160kg",
+      "inventarnummern": [
+        "M-011",
+        "M-012"
+      ],
+      "verbrauchsmaterial": [
+        {
+          "material": "Diesel",
+          "einheit": "Liter",
+          "preis": "1,79 €",
+          "lieferant": "Tankstelle Raiffeisen Remscheid",
+          "verbrauch": "ca. 40 Liter pro Tag"
+        },
+        {
+          "material": "Motoroel 15W40",
+          "einheit": "l",
+          "preis": 6.97,
+          "lieferant": "Lorenz Schmierstoffe (Tel. 0202 / 77 31 22)",
+          "verbrauch": "26l je Wartung",
+          "lagerbestand": "nachbestellt",
+          "ausgaben": [
+            {
+              "datum": "25.10.2025",
+              "menge": 51,
+              "geraet": "M-012",
+              "rechnungsnr": "R-2025-040"
+            },
+            {
+              "datum": "2026-01-03",
+              "menge": 22,
+              "geraet": "M-012",
+              "kunde": "Maler Klein GbR"
+            }
+          ]
+        },
+        {
+          "material": "Luftfiltereinsatz",
+          "einheit": "Stück",
+          "preis": 19.35,
+          "lieferant": "Schmitz Baumaschinen (02191 / 93 40 0)",
+          "verbrauch": "ca. alle 6 Monate",
+          "lagerbestand": "26 Stück"
+        },
+        {
+          "material": "Keilriemen",
+          "einheit": "Stk.",
+          "preis": "16,00 €",
+          "lieferant": "Fa. Schmitz",
+          "verbrauch": "ca. alle 6 Monate",
+          "lagerbestand": "leer"
+        },
+        {
+          "material": "Gummimatte Rüttelplatte",
+          "einheit": "Stück",
+          "preis": "139,38",
+          "lieferant": "Fa. Schmitz",
+          "verbrauch": "ca. alle 3 Monate",
+          "lagerbestand": "99 Stück",
+          "ausgaben": [
+            {
+              "datum": "2025-10-25",
+              "menge": "2 Stück",
+              "geraet": "M-011"
+            },
+            {
+              "datum": "2026-07-11",
+              "menge": "1 Stück",
+              "geraet": "M-012",
+              "rechnungsnr": "R-2026-002",
+              "kunde": "Maler Klein GbR"
+            },
+            {
+              "datum": "11.09.26",
+              "menge": "1 Stück",
+              "geraet": "M-012"
+            }
+          ]
+        }
+      ],
+      "bemerkung": "vollgetankt übergeben, Nachtanken wird berechnet"
+    },
+    {
+      "maschine": "Rüttelstampfer",
+      "inventarnummern": [
+        "M-013",
+        "M-014"
+      ],
+      "verbrauchsmaterial": [
+        {
+          "material": "Gemisch 1:50",
+          "einheit": "Kanister 5l",
+          "preis": 24.73,
+          "lieferant": "Hoffmann Motorgeräte, Tel 0212-55 80 1",
+          "verbrauch": "ca. alle 12 Monate",
+          "lagerbestand": "leer"
+        },
+        {
+          "material": "Motoroel 15W40",
+          "einheit": "Liter",
+          "preis": "7,47 €",
+          "lieferant": "Schmierstoffe Lorenz GmbH, Fr. Lorenz",
+          "verbrauch": "nach Bedarf"
+        },
+        {
+          "material": "Luftfiltereinsatz",
+          "einheit": "Stück",
+          "preis": "19,97 €",
+          "lieferant": "Fa. Schmitz",
+          "verbrauch": "bei Wartung",
+          "lagerbestand": 29,
+          "ausgaben": [
+            {
+              "datum": "12.07.26",
+              "menge": "2 Stück",
+              "geraet": "M-013"
+            }
+          ]
+        },
+        {
+          "material": "Zündkerze",
+          "einheit": "Stück",
+          "preis": 7.0,
+          "lieferant": "Hoffmann Motorgeräte, Tel 0212-55 80 1",
+          "verbrauch": "Verschleißteil"
+        }
+      ],
+      "bemerkung": "vollgetankt übergeben, Nachtanken wird berechnet"
+    },
+    {
+      "maschine": "Stromerzeuger 5kVA",
+      "inventarnummern": [
+        "M-015",
+        "M-016"
+      ],
+      "verbrauchsmaterial": [
+        {
+          "material": "Super E10",
+          "einheit": "l",
+          "preis": "1.77 EUR",
+          "lieferant": "Raiffeisen Markt RS, Hr. Becker, 02191-44 55 0",
+          "verbrauch": "nach Bedarf"
+        },
+        {
+          "material": "Motoröl",
+          "einheit": "l",
+          "preis": "6.81 EUR",
+          "lieferant": "Schmierstoffe Lorenz GmbH, Fr. Lorenz",
+          "verbrauch": "ca. 26 l pro Tag",
+          "lagerbestand": "nachbestellt"
+        },
+        {
+          "material": "Luftfiltereinsatz",
+          "einheit": "Stück",
+          "preis": "20,69",
+          "lieferant": "Fa. Schmitz",
+          "verbrauch": "Verschleißteil",
+          "lagerbestand": "leer",
+          "ausgaben": [
+            {
+              "datum": "28.04.26",
+              "menge": 3,
+              "geraet": "M-016"
+            }
+          ]
+        },
+        {
+          "material": "Zuendkerze",
+          "einheit": "Stück",
+          "preis": "6,00",
+          "lieferant": "Motorgeräte Hoffmann, Hr. Hoffmann",
+          "verbrauch": null,
+          "lagerbestand": "55 Stück"
+        }
+      ]
+    },
+    {
+      "maschine": "Hochdruckreiniger",
+      "inventarnummern": [
+        "M-017",
+        "M-018"
+      ],
+      "verbrauchsmaterial": [
+        {
+          "material": "Heizöl",
+          "einheit": "l",
+          "preis": "1.10 EUR",
+          "lieferant": "Raiffeisen",
+          "verbrauch": "nach Bedarf",
+          "lagerbestand": 25
+        },
+        {
+          "material": "Reinigungsmittel alkalisch",
+          "einheit": "Kanister 10l",
+          "preis": "38,72",
+          "lieferant": "Kaercher Center W-tal, Fr. Ott",
+          "verbrauch": "bei Wartung"
+        },
+        {
+          "material": "Öl 15W-40",
+          "einheit": "l",
+          "preis": "7,23 €",
+          "lieferant": "Lorenz Schmierstoffe (Tel. 0202 / 77 31 22)",
+          "verbrauch": "nach Bedarf"
+        }
+      ],
+      "bemerkung": "Verschleißteile bei Beschädigung durch Kunden weiterberechnen"
+    },
+    {
+      "maschine": "Bohrhammer SDS-Max",
+      "inventarnummern": [
+        "M-019",
+        "M-020",
+        "M-021"
+      ],
+      "verbrauchsmaterial": [
+        {
+          "material": "Spitzmeißel SDS-Max",
+          "einheit": "Stück",
+          "preis": "18,31 €",
+          "lieferant": "Würth",
+          "verbrauch": "Verschleißteil",
+          "lagerbestand": "nachbestellt"
+        },
+        {
+          "material": "Bohrer SDS-Max 25mm",
+          "einheit": "Stk.",
+          "preis": "29.32 EUR",
+          "lieferant": "Würth",
+          "verbrauch": "ca. alle 3 Monate",
+          "lagerbestand": "nachbestellt",
+          "ausgaben": [
+            {
+              "datum": "23.06.2026",
+              "menge": "4 Stk.",
+              "geraet": "M-020",
+              "kunde": "Holger Koch"
+            },
+            {
+              "datum": "2026-04-24",
+              "menge": 1,
+              "geraet": "M-021",
+              "rechnungsnr": "R-2026-051"
+            },
+            {
+              "datum": "05.05.2025",
+              "menge": "4 Stk.",
+              "geraet": "M-021",
+              "kunde": "Heike Weber"
+            },
+            {
+              "datum": "27.04.2025",
+              "menge": 4,
+              "geraet": "M-021",
+              "rechnungsnr": "R-2025-049"
+            }
+          ]
+        },
+        {
+          "material": "Fettkartusche",
+          "einheit": "Stück",
+          "preis": 8.15,
+          "lieferant": "Lorenz Schmierstoffe (Tel. 0202 / 77 31 22)",
+          "verbrauch": "bei Wartung",
+          "lagerbestand": "leer"
+        }
+      ]
+    },
+    {
+      "maschine": "Bauheizer",
+      "inventarnummern": [
+        "M-022",
+        "M-023",
+        "M-024"
+      ],
+      "verbrauchsmaterial": [
+        {
+          "material": "Heizöl EL",
+          "einheit": "l",
+          "preis": "1,03 €",
+          "lieferant": "Raiffeisen",
+          "verbrauch": "3 l/Bh",
+          "lagerbestand": "nachbestellt"
+        },
+        {
+          "material": "Diesel",
+          "artikelnr": "",
+          "einheit": "l",
+          "preis": 1.62,
+          "lieferant": "Raiffeisen Markt RS, Hr. Becker, 02191-44 55 0",
+          "verbrauch": "9 l/Bh"
+        },
+        {
+          "material": "Brennerdüse",
+          "einheit": "Stück",
+          "preis": "12,95",
+          "lieferant": "Fa. Schmitz",
+          "verbrauch": "Verschleißteil"
+        },
+        {
+          "material": "Kraftstofffilter",
+          "einheit": "Stück",
+          "preis": "14,73",
+          "lieferant": "Baumaschinen Schmitz GmbH, Hr. Schmitz",
+          "verbrauch": "ca. alle 12 Monate",
+          "lagerbestand": 21
+        }
+      ],
+      "bemerkung": "Verschleißteile bei Beschädigung durch Kunden weiterberechnen"
+    },
+    {
+      "maschine": "Gerüst 3x2m (Woche)",
+      "inventarnummern": [
+        "M-025",
+        "M-026"
+      ],
+      "verbrauchsmaterial": [
+        {
+          "material": "Bordbrett 2m",
+          "einheit": "Stk.",
+          "preis": "22,50 €",
+          "lieferant": "Wuerth",
+          "verbrauch": "bei Wartung",
+          "lagerbestand": "160 Stk."
+        }
+      ],
+      "bemerkung": "Material im Container 2"
+    },
+    {
+      "maschine": "Trennschleifer",
+      "inventarnummern": [
+        "M-027",
+        "M-028"
+      ],
+      "verbrauchsmaterial": [
+        {
+          "material": "Sonderkraftstoff 2-Takt (Aspen)",
+          "einheit": "Kanister 5l",
+          "preis": "23.36 EUR",
+          "lieferant": "Hoffmann Motorgeräte, Tel 0212-55 80 1",
+          "verbrauch": null,
+          "lagerbestand": 8
+        },
+        {
+          "material": "Diamanttrennscheibe 350mm",
+          "einheit": "Stk.",
+          "preis": "99.54 EUR",
+          "lieferant": "Wuerth",
+          "verbrauch": null,
+          "ausgaben": [
+            {
+              "datum": "04.09.2025",
+              "menge": 3,
+              "geraet": "M-027"
+            },
+            {
+              "datum": "22.05.25",
+              "menge": "3 Stk.",
+              "geraet": "M-027",
+              "rechnungsnr": "R-2025-053"
+            },
+            {
+              "datum": "27.05.2025",
+              "menge": "4 Stk.",
+              "geraet": "M-027",
+              "kunde": "Maler Klein GbR"
+            }
+          ]
+        },
+        {
+          "material": "Luft-Filter",
+          "artikelnr": "ART-1620",
+          "einheit": "Stk.",
+          "preis": "19,93",
+          "lieferant": "Schmitz Baumaschinen (02191 / 93 40 0)",
+          "verbrauch": null,
+          "lagerbestand": "nachbestellt"
+        },
+        {
+          "material": "Zündkerze",
+          "einheit": "Stück",
+          "preis": "7,07",
+          "lieferant": "Hoffmann Motorgeräte, Tel 0212-55 80 1",
+          "verbrauch": "nach Bedarf",
+          "lagerbestand": "nachbestellt",
+          "ausgaben": [
+            {
+              "datum": "2025-11-25",
+              "menge": "1 Stück",
+              "geraet": "M-028"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "maschine": "Kettensäge",
+      "inventarnummern": [
+        "M-029",
+        "M-030"
+      ],
+      "verbrauchsmaterial": [
+        {
+          "material": "2-Takt-Gemisch",
+          "einheit": "Kanister 5l",
+          "preis": "24,11",
+          "lieferant": "Motorgeräte Hoffmann, Hr. Hoffmann",
+          "verbrauch": null,
+          "lagerbestand": "leer"
+        },
+        {
+          "material": "Bio-Kettenhaftöl",
+          "einheit": "Liter",
+          "preis": "6.01 EUR",
+          "lieferant": "Fa. Hoffmann",
+          "verbrauch": "nach Bedarf",
+          "ausgaben": [
+            {
+              "datum": "04.08.2026",
+              "menge": 12,
+              "geraet": "M-029",
+              "rechnungsnr": "R-2026-069"
+            },
+            {
+              "datum": "2026-04-10",
+              "menge": 5,
+              "geraet": "M-030",
+              "rechnungsnr": "R-2026-023",
+              "kunde": "GaLaBau Krause GmbH & Co. KG"
+            },
+            {
+              "datum": "28.06.2026",
+              "menge": "30 Liter",
+              "geraet": "M-029",
+              "rechnungsnr": "R-2026-004"
+            },
+            {
+              "datum": "2025-11-18",
+              "menge": "24 Liter",
+              "geraet": "M-029"
+            }
+          ]
+        },
+        {
+          "material": "Sägekette 3/8\" 45cm",
+          "einheit": "Stück",
+          "preis": 31.33,
+          "lieferant": "Motorgeräte Hoffmann, Hr. Hoffmann",
+          "verbrauch": "Verschleißteil",
+          "ausgaben": [
+            {
+              "datum": "30.06.2026",
+              "menge": 2,
+              "geraet": "M-029"
+            },
+            {
+              "datum": "08.10.25",
+              "menge": 4,
+              "geraet": "M-030"
+            }
+          ]
+        },
+        {
+          "material": "Zündkerze",
+          "einheit": "Stück",
+          "preis": "6.27 EUR",
+          "lieferant": "Motorgeräte Hoffmann, Hr. Hoffmann",
+          "verbrauch": "bei Wartung",
+          "lagerbestand": "leer"
+        },
+        {
+          "material": "Luft-Filter",
+          "einheit": "Stk.",
+          "preis": "20,29 €",
+          "lieferant": "Schmitz Baumaschinen (02191 / 93 40 0)",
+          "verbrauch": "bei Wartung",
+          "lagerbestand": 40
+        }
+      ],
+      "bemerkung": "Kraftstoff wird dem Kunden nach Verbrauch berechnet"
+    },
+    {
+      "maschine": "Häcksler elektrisch",
+      "inventarnummern": [
+        "M-031"
+      ],
+      "verbrauchsmaterial": [
+        {
+          "material": "Häckslermesser (Satz)",
+          "artikelnr": "ART-5661",
+          "einheit": "Satz",
+          "preis": 45.21,
+          "lieferant": "Motorgeräte Hoffmann, Hr. Hoffmann",
+          "verbrauch": "bei Wartung",
+          "lagerbestand": 17,
+          "ausgaben": [
+            {
+              "datum": "04.02.25",
+              "menge": "4 Satz",
+              "geraet": "M-031"
+            },
+            {
+              "datum": "04.07.25",
+              "menge": "1 Satz",
+              "geraet": "M-031"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "maschine": "Kompressor",
+      "inventarnummern": [
+        "M-032"
+      ],
+      "verbrauchsmaterial": [
+        {
+          "material": "Dieselkraftstoff",
+          "einheit": "l",
+          "preis": "1,53",
+          "lieferant": "Tankstelle Raiffeisen Remscheid",
+          "verbrauch": "nach Bedarf"
+        },
+        {
+          "material": "Motoroel 15W40",
+          "einheit": "Liter",
+          "preis": "6,56",
+          "lieferant": "Lorenz Schmierstoffe (Tel. 0202 / 77 31 22)",
+          "verbrauch": "ca. 4 Liter pro Tag",
+          "lagerbestand": "83 Liter"
+        },
+        {
+          "material": "Luftfilter",
+          "einheit": "Stk.",
+          "preis": "18.65 EUR",
+          "lieferant": "Baumaschinen Schmitz GmbH, Hr. Schmitz",
+          "verbrauch": null
+        },
+        {
+          "material": "Dieselfilter",
+          "einheit": "Stück",
+          "preis": 14.63,
+          "lieferant": "Fa. Schmitz",
+          "verbrauch": "nach Bedarf"
+        },
+        {
+          "material": "Keilriemen",
+          "artikelnr": "",
+          "einheit": "Stück",
+          "preis": "16,31 €",
+          "lieferant": "Schmitz Baumaschinen (02191 / 93 40 0)",
+          "verbrauch": "nach Bedarf",
+          "ausgaben": [
+            {
+              "datum": "24.04.26",
+              "menge": 3,
+              "geraet": "M-032",
+              "rechnungsnr": "R-2026-077"
+            },
+            {
+              "datum": "29.05.25",
+              "menge": 4,
+              "geraet": "M-032",
+              "rechnungsnr": "R-2025-068",
+              "kunde": "GaLaBau Krause GmbH & Co. KG"
+            },
+            {
+              "datum": "2026-07-24",
+              "menge": "3 Stück",
+              "geraet": "M-032"
+            },
+            {
+              "datum": "2026-09-20",
+              "menge": "2 Stück",
+              "geraet": "M-032",
+              "kunde": "GaLaBau Krause GmbH & Co. KG"
+            }
+          ]
+        }
+      ],
+      "bemerkung": "vollgetankt übergeben, Nachtanken wird berechnet"
+    },
+    {
+      "maschine": "Estrichpumpe",
+      "inventarnummern": "M-033",
+      "verbrauchsmaterial": [
+        {
+          "material": "DK",
+          "einheit": "Liter",
+          "preis": "1,56 €",
+          "lieferant": "Raiffeisen Markt RS, Hr. Becker, 02191-44 55 0",
+          "verbrauch": "nach Bedarf",
+          "lagerbestand": "nachbestellt"
+        },
+        {
+          "material": "Motoroel 15W40",
+          "einheit": "l",
+          "preis": "6.55 EUR",
+          "lieferant": "Schmierstoffe Lorenz GmbH, Fr. Lorenz",
+          "verbrauch": "9 l/Bh",
+          "lagerbestand": "nachbestellt"
+        },
+        {
+          "material": "Hydrauliköl HLP 46",
+          "einheit": "Liter",
+          "preis": "4,43",
+          "lieferant": "Schmierstoffe Lorenz GmbH, Fr. Lorenz",
+          "verbrauch": "ca. 36 Liter pro Tag",
+          "lagerbestand": "leer"
+        },
+        {
+          "material": "Abschmierfett",
+          "einheit": "Stk.",
+          "preis": "7,89 €",
+          "lieferant": "Lorenz Schmierstoffe (Tel. 0202 / 77 31 22)",
+          "verbrauch": "Verschleißteil",
+          "lagerbestand": "35 Stk."
+        },
+        {
+          "material": "Luftfilter",
+          "artikelnr": "437728",
+          "einheit": "Stück",
+          "preis": "20,18",
+          "lieferant": "Schmitz Baumaschinen (02191 / 93 40 0)",
+          "verbrauch": "nach Bedarf",
+          "ausgaben": [
+            {
+              "datum": "16.05.2026",
+              "menge": 1,
+              "geraet": "M-033",
+              "rechnungsnr": "R-2026-040"
+            },
+            {
+              "datum": "06.05.26",
+              "menge": "2 Stück",
+              "geraet": "M-033"
+            }
+          ]
+        }
+      ],
+      "bemerkung": "vollgetankt übergeben, Nachtanken wird berechnet"
+    },
+    {
+      "maschine": "Anhänger 750kg",
+      "inventarnummern": "M-034, M-035",
+      "verbrauchsmaterial": [
+        {
+          "material": "Glühlampe 12V 21W",
+          "einheit": "Stück",
+          "preis": "1.94 EUR",
+          "lieferant": "ATU Remscheid",
+          "verbrauch": "Verschleißteil",
+          "lagerbestand": "55 Stück",
+          "ausgaben": [
+            {
+              "datum": "10.05.26",
+              "menge": "1 Stück",
+              "geraet": "M-034",
+              "kunde": "Anja Krause"
+            }
+          ]
+        },
+        {
+          "material": "Fettkartusche",
+          "einheit": "Stück",
+          "preis": "7.64 EUR",
+          "lieferant": "Schmierstoffe Lorenz GmbH, Fr. Lorenz",
+          "verbrauch": null,
+          "lagerbestand": "nachbestellt"
+        }
+      ],
+      "bemerkung": "Verschleißteile bei Beschädigung durch Kunden weiterberechnen"
+    }
+  ]
+}
+
+
+
+
+
+
+
