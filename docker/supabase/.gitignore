@@ -1,0 +1,6 @@
+# Zugangsdaten und Schlüssel, niemals ins Repo
+.env
+
+# Daten der Container (Datenbank, Speicher)
+volumes/
+
